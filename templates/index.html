@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/files.css') }}">
+<div class="body">
+    <div class="menu">
+        <a class="new-file-button" href="/new_file">New file</a>
+        <a href="#">New folder</a>
+    </div>
+
+    <div class="files">
+        <h1>Welcome to MickiNAS</h1>
+        <h4>Files</h4>
+
+        <div class="table-col-names">
+            <p>Name</p>
+            <p>Date modified</p>
+            <p>Owner</p>
+        </div>
+
+        <div class="files-table">
+            {% for file in files %}
+            <hr style="border-width: 1px; height: 0px; border-style: solid; border-color: lightgray;">
+                <div class="file-options">
+                    <div class="file">
+                        <a class="file-properties" href="{{ url_for('download_file', file_id=file['id']) }}">
+                            <p class="file-name">{{ file['name'] }}</p>
+                            <div class="file-details">
+                                <p class="file-mod-date">{{ file['updated_date'] }}</p>
+                                <p class="file-details-bullet-point">•</p>
+                                <p class="file-owner">{{ file['owner_name'] }}</p>
+                            </div>
+                        </a>
+                        
+                    </div>
+                    <button class="toggle-menu-btn"><img src="/static/images/more_vert.svg" alt=""></button> <!-- Toggle button -->
+                    <!-- Hidden menu that will be toggled -->
+                    <div class="file-menu">
+                        <div style="display: inline-flex; justify-content: space-between; padding-left: 20px; padding-right: 10px;">
+                            <p style="width: 90%; height: 80px;">{{ file['name'] }}</p>
+                            <button style="position: absolute; top: 20px; right: 20px;" class="toggle-menu-btn"><img src="/static/images/close_icon.svg" alt=""></button>
+                        </div>
+                        <hr style="width: 90vw;">
+                        <a href="#" style="display: inline-flex;"><img style="margin-right: 7px;" src="/static/images/share_icon.svg" alt="">Share</a>
+                        <a href="#" style="display: inline-flex;"><img style="margin-right: 7px;" src="/static/images/manage_access_icon.svg" alt="">Manage access</a>
+                        <a href="#" style="display: inline-flex;"><img style="margin-right: 7px;" src="/static/images/starred_icon.svg" alt="">Add to Starred</a>
+                        <hr style="width: 90vw;">
+                        <a href="#" style="display: inline-flex;"><img style="margin-right: 7px;" src="/static/images/copy_link_icon.svg" alt="">Copy link</a>
+                        <a href="{{ url_for('download_file', file_id=file['id']) }}" style="display: inline-flex;"><img style="margin-right: 7px;" src="/static/images/download_icon.svg" alt="">Download</a>
+                        <a href="#" style="display: inline-flex;"><img style="margin-right: 7px;" src="/static/images/rename_icon.svg" alt="">Rename</a>
+                        <a href="#" style="display: inline-flex;"><img style="margin-right: 7px;" src="/static/images/info_icon.svg" alt="">Details</a>
+                        <a href="/delete-file/{{ file['id'] }}" style="display: inline-flex;"><img style="margin-right: 7px;" src="/static/images/delete_icon.svg" alt="">Delete</a>
+                    </div>
+                </div>
+
+            {% endfor %}
+            <div class="filler-space"><p></p></div>
+        </div>
+
+    </div>
+</div>
+
+<button onclick="window.location.href='/new_file'" class="mobile-new-button">+ New</button>
+
+<script src="/static/js/fileMenu.js"></script>
+
+{% endblock %}

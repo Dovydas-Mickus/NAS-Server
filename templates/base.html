@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.webp') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>{% block title %}My Website{% endblock %}</title>
+</head>
+<body>
+
+    <header>
+        <a href="/">NAS</a>
+        <form action="#">
+            <button type="submit"><img src="/static/images/search_icon.svg" alt="SVG Image" width="100" height="100"></button>
+            <input type="text" placeholder="Search...">
+        </form>
+        <button class="account-button" type="submit"><img src="/static/images/account_icon.svg" alt="SVG Image" width="100" height="100"></button>
+    </header>
+
+    <main class=".body">
+        {% block content %}
+
+        {% endblock %}
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    font-family: Nunito;
+    color:#21272d;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    background-color: #f8fafd;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    display: inline-flex;
+    margin: 0;
+    justify-content: space-between;
+    width: 90%;
+    align-self: center;
+    justify-self: center;
+    position: sticky;
+    top: 0;
+}
+
+header form {
+    background-color: #e9eef6;
+    display: inline-flex;
+    height: 30px;
+    padding: 10px;
+    border-radius: 25px;
+    align-items: center;
+
+}
+
+header form input[type=text] {
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+    font-size: 16px;
+    width: 40vw;
+}
+
+header form button {
+    background-color: transparent;
+    border-color: transparent;
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+    height: fit-content;
+    display: inline-flex;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+header form button:hover {
+    background-color: #dce0e8;
+    cursor: pointer;
+}
+
+header form img {
+    height: 26px;
+    width: 26px;
+    box-sizing: border-box;
+}
+
+header a {
+    font-size: 40px;
+    text-decoration: none; 
+}
+
+.account-button {
+    border-radius: 50%;
+    border-style: solid;
+    display: inline-flex;
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.account-button:hover {
+    background-color:#dadcde;
+}
+
+.account-button img {
+    width: 40px;
+    height: 40px;
+}
+
+
+.upload-area {
+    width: 80%;
+    height: 200px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.upload-area.dragging {
+    background-color: #f0f8ff;
+    border-color: #007bff;
+}
+
+.upload-area p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.upload-area input {
+    display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+    h1 {
+        display: none;
+    }
+    header a {
+        display: none;
+    }
+    header form input[type=text] {
+        width: 65vw;
+    }
+    header {
+        width: 100%;
+        justify-content: space-around;
+        position: sticky;
+    }
+}

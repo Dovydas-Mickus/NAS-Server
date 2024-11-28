@@ -1,0 +1,32 @@
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Path</th>
+            <th>Is Directory</th>
+            <th>Owner ID</th>
+            <th>Size</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Folder ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for file in files %}
+        <tr>
+            <td>{{ file['id'] }}</td>
+            <td>
+                <a href="{{ url_for('download_file', file_id=file['id']) }}">{{ file['name'] }}</a>
+            </td>
+            <td>{{ file['path'] }}</td>
+            <td>{{ 'Yes' if file['is_directory'] else 'No' }}</td>
+            <td>{{ file['owner_id'] }}</td>
+            <td>{{ file['size'] }}</td>
+            <td>{{ file['created_at'] }}</td>
+            <td>{{ file['updated_at'] }}</td>
+            <td>{{ file['folder_id'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
